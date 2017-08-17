@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"> 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+	rel="stylesheet" />
+<title>NIIT</title>
+</head>
+<body data-ng-app="app">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">NIIT</a>
+    </div>
+    <ul class="nav navbar-nav">
+    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+    <li class="dropdown" data-ng-show="currentUser.firstName">
+        <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-briefcase"></span> Jobs
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+	<li><a href="#/savejob" data-ng-show="currentUser.role=='Admin'">Insert New
+		Job</a></li>
+	<li><a href="#/getalljobs"><span class="glyphicon glyphicon-search"></span> View Jobs</a></li>
+        </ul>
+        <li class="dropdown" data-ng-show="currentUser.firstName">
+        <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-book"></span> Blogs
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+	<li><a href="#/saveblogpost" data-ng-show="currentUser.firstName"><span class="glyphicon glyphicon-pencil"></span> Write Blog</a></li>
+	
+	<li><a href="#/listofblogs" data-ng-show="currentUser.firstName"><span class="glyphicon glyphicon-search"></span> View Blogs</a></li>
+	    </ul>
+	    <li class="dropdown" data-ng-show="currentUser.firstName">
+        <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-globe"></span> Friends
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+	<li><a href="#/friendsuggestions" data-ng-show="currentUser.firstName">Friend Suggestions</a></li>
+	<li><a href="#/pendingrequests" data-ng-show="currentUser.firstName">Friend Requests</a></li>
+	<li><a href="#/viewfriends" data-ng-show="currentUser.firstName">Friend List</a></li>
+	<li><a href="#/editprofile" data-ng-show="currentUser.firstName">Edit Profile</a></li>
+	    </ul>
+	    <li><a href="#chat" data-ng-show="currentUser.username"><span class="glyphicon glyphicon-envelope"></span> Chat </a></li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+	<li><a href="#profilepic" data-ng-show="currentUser.username">
+                    <img src="http://localhost:8079/BackEndProjectTwo/getimage/{{currentUser.username}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">
+                    </a></li>
+      <li><a href="#/registration" data-ng-hide="currentUser.firstName"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#/login" data-ng-hide="currentUser.firstName"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#/wall/{{currentUser.username}}" data-ng-show="currentUser.firstName">
+		{{currentUser.firstName}} {{currentUser.lastName}}</a></li>
+      <li><a href="" data-ng-show="currentUser.firstName" data-ng-click="logout()">Log
+		Out</a></li>
+    </ul>
+	</div>
+	</nav>
+	<div data-ng-view style="vertical-align: top;margin:0px;outline:none;" ></div>
+</body>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js">
+	</
+</script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js">
+	</
+</script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js">
+	</
+</script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="controllers/usercontroller.js"></script>
+<script type="text/javascript" src="services/userservice.js"></script>
+<script type="text/javascript" src="controllers/jobcontroller.js"></script>
+<script type="text/javascript" src="services/jobservice.js"></script>
+<script type="text/javascript" src="controllers/blogcontroller.js"></script>
+<script type="text/javascript" src="services/blogservice.js"></script>
+<script type="text/javascript" src="controllers/blogdetailcontroller.js"></script>
+<script type="text/javascript" src="controllers/friendcontroller.js"></script>
+<script type="text/javascript" src="services/friendservice.js"></script>
+<script type="text/javascript" src="controllers/wallcontroller.js"></script>
+<script src="js/sockjs/sockjs.js"></script>
+<script src="js/stomp/dist/stomp.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+<script type="text/javascript" src="services/chatservice.js"></script>
+<script type="text/javascript" src="controllers/messagecontroller.js"></script>
+<script type="text/javascript" src="services/messageservice.js"></script>
+
+</html>

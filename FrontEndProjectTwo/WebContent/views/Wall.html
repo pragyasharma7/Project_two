@@ -1,0 +1,64 @@
+<div class="container" style="height:100%;width:100%;background-size:cover;margin:0;padding:0;box-sizing: border-box;align:center">
+<!-- <h4 align="center">Posts by {{wallName}}</h4> -->
+<!-- <div>
+</div> -->
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    /* background-size: 200% 100% !important;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0); */
+/*     background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%); */
+    background-image:url("images/white.jpg") ; */
+    background-size: cover;
+    height: 100vh
+}
+</style>
+<div class="container">
+<div align="center">
+<img src="http://localhost:8080/BackEndProjectTwo/getimage/{{wallName}}" alt="Profile Picture" width="300px" height="300px">
+</div>
+<div align="center">
+<h4 align="center" data-ng-show="currentUser.username==wallName"><a href="#/editprofile">{{wallName}}</a></h4>
+<h4 align="center" data-ng-show="currentUser.username!=wallName">{{wallName}}</h4>
+
+<table class="table-condensed" style="text-align:center;">
+<tr><td>{{friendDetailsOne.firstName}}  {{friendDetailsOne.lastName}}</td></tr>
+<tr><td>  {{friendDetailsOne.email}}</td></tr>
+<tr><td data-ng-if="friendDetailsOne.online">ONLINE</td><td data-ng-if="!friendDetailsOne.online">OFFLINE</td></tr>
+<tr><td>  {{friendDetailsOne.role}}</td></tr>
+</table>
+</div>
+<hr>
+<h4><a href="#/saveblogpost">---- Write new Blog ----</a></h4>
+<table>
+<tr data-ng-repeat="p in blogPost | orderBy: '-postedOn'">
+<td><a href="#/getBlogDetail/{{p.id}}"><h3>{{p.title}}</h3></a><h6>{{p.createdBy.firstName}} {{p.createdBy.lastName}}</h6><p>{{p.description}}</p>
+<div data-ng-mouseover="open = true" data-ng-mouseleave="open = false" >
+Comments
+<form data-ng-show="open">
+<textarea rows="3" cols="20" data-ng-model="$parent.comment"></textarea><br>
+<button class="btn btn-default" data-ng-click="addComment(p)">Post</button>
+</form>
+</div>
+
+<ul>
+<li data-ng-repeat="comment in p.comments">
+<h6>{{comment.commentedBy.username}}</h6>
+<p>{{comment.body}}</p>
+<p>{{comment.commentedOn | date:'medium'}}
+</p>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+</div>

@@ -1,0 +1,176 @@
+<!-- <div style="background-image:url(images/students.jpg);height:100%;width:100%;position:absolute;background-size: cover;" align="right">
+<div class="container">
+{{message}}
+<form class="form-inline"> 
+
+<div class="form-group">
+<input type="text" class="form-control" data-ng-model="user.username" placeholder="Enter Username"  size="25"><br/>
+</div>
+<div class="form-group">
+<input type="text" class="form-control" data-ng-model="user.password" placeholder="Password" size="25"><br/>
+</div>
+<input type="submit" value="Login" data-ng-click="login()">
+</form>
+<img src="images/students.jpg" alt="sfdf"/>
+</div>
+</div> -->
+
+<div class="user" style="align:center;">
+<style scoped>
+    $font-family:   "Roboto";
+$font-size:     14px;
+
+$color-primary: #ABA194;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    /* background-size: 200% 100% !important;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0); */
+/*     background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%); */
+    background-image:url("images/studentsedited.jpg") ; */
+    background:blue;
+    background-size: cover;
+    height: 100vh
+}
+
+.user {
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
+}
+
+.user__header {
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 0.3s ease-in-out 0.7s forwards;
+}
+
+.user__title {
+    font-size: $font-size;
+    margin-bottom: -10px;
+    font-weight: 500;
+    color: blue;
+}
+
+.form {
+    margin-top: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 0.3s ease-in-out 0.9s forwards;
+}
+
+.form--no {
+    animation: NO 1s ease-in-out;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    
+    &:focus {
+        background: darken(#fff, 3%);
+    }
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: black;
+/*     background: $color-primary; */
+    background: white;
+    transition: 0.3s;
+    
+    &:hover {
+         background: darken($color-primary, 5%); 
+    }
+}
+
+@keyframes NO {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes arrive {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0
+    }
+
+    50% {
+        background-position: 100% 0
+    }
+
+    100% {
+        background-position: 0 0
+    }
+}
+  </style>
+  {{error}}
+  {{message}}
+
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+        <h1 class="user__title"><!-- A lightweight and simple sign-up form --></h1>
+    </header>
+    
+    <form class="form" name="loginForm" novalidate>
+    
+        <div class="form__group">
+            <input type="text" data-ng-model="user.username" name="username" placeholder="Username" class="form__input" required />
+            <span data-ng-show="loginForm.username.$invalid && !loginForm.username.$pristine" style="color:red;">Username cannot be blank</span>
+        </div>
+        <div class="form__group">
+            <input type="password" data-ng-model="user.password" name="password" placeholder="Password" class="form__input" required />
+            <span data-ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" style="color:red;">Password cannot be blank</span>
+        </div>
+        
+        <button class="btn" type="button" data-ng-click="login()" data-ng-disabled="loginForm.$invalid">Submit</button>
+    </form>
+    </div>

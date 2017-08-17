@@ -1,0 +1,33 @@
+<div>
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    /* background-size: 200% 100% !important;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0); */
+/*     background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%); */
+    background-image:url("images/white.jpg") ; 
+    background-size: cover;
+    height: 100vh
+}
+</style>
+<div class="container" align="center">
+<h3>{{heading}}</h3>
+<table>
+<tr data-ng-repeat="mssg in messages">
+<td><p data-ng-if="mssg.fromUser!=currentUser.username"><sub>{{mssg.fromUser}}</sub></p><p data-ng-if="mssg.fromUser==currentUser.username"><sub>Me</sub></p><p>{{mssg.body}}</p><p><sub>{{mssg.date | date:'medium'}}</sub></p></td>
+</tr>
+</table>
+<form>
+<textarea rows="3" cols="30" data-ng-model="message.body"></textarea><br>
+<button class="btn btn-default" data-ng-click="send()">Send</button>
+</form>
+</div>
+</div>

@@ -1,0 +1,45 @@
+<div> 
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    /* background-size: 200% 100% !important;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0); */
+/*     background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%); */
+    background-image:url("images/white.jpg") ; 
+    background-size: cover;
+    height: 100vh
+}
+</style>
+<div class="container">
+<h3>{{blogPost.title}}</h3>
+<b>Created by: {{blogPost.createdBy.username}}</b><br>
+<b>{{blogPost.postedOn | date:'medium'}}</b>
+<p>{{blogPost.description}}</p>
+<h6>Write a comment</h6>
+<form>
+<textarea rows="3" cols="20" data-ng-model="blogComment.body"></textarea><br>
+<button class="btn btn-default" data-ng-click="addComment()">Post</button>
+</form>
+<!-- <a href="" data-ng-click="getBlogComments(blogPost.id)">View Comments</a>  -->
+<h5 data-ng-mouseover="getBlogComments(blogPost.id)">Comments</h5>
+<ul data-ng-show="showComments"> 
+<li data-ng-repeat="comment in blogComments">
+<h6>{{comment.commentedBy.username}}</h6>
+<p>{{comment.body}}</p>
+<p>{{comment.commentedOn | date:'medium'}}
+</li>
+</ul>
+</div>
+</div>
+
+
+
+

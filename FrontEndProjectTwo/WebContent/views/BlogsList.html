@@ -1,0 +1,38 @@
+<div>
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    /* background-size: 200% 100% !important;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0); */
+/*     background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%); */
+    background-image:url("images/white.jpg") ; 
+    background-size: cover;
+    height: 100vh
+}
+</style>
+<div class="table-responsive" data-ng-show="currentUser.role=='Admin'">
+<h3>List of Blogs awaiting Approval</h3>
+<table class="table">
+<tr data-ng-repeat="blogPost in blogsWaitingForApproval">
+<td><a href="#getBlogForApproval/{{blogPost.id}}">{{blogPost.title}}</a></td><td>Created by: {{blogPost.createdBy.firstName}}</td><td>Created on: {{blogPost.postedOn | date:'yyyy:mm:dd HH:mm'}}</td>
+</tr>
+</table>
+</div>
+
+<div class="table-responsive">
+<h3>List of Blogs</h3>
+<table class="table">
+<tr data-ng-repeat="blogPost in blogsApproved">
+<td><a href="#getBlogDetail/{{blogPost.id}}">{{blogPost.title}}</a></td><td>Created by: {{blogPost.createdBy.firstName}}</td><td>Created on: {{blogPost.postedOn | date:'yyyy:mm:dd HH:mm'}}</td>
+</tr>
+</table>
+</div>
+</div>

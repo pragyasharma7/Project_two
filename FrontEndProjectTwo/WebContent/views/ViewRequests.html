@@ -1,0 +1,29 @@
+<div>
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    /* background-size: 200% 100% !important;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0); */
+/*     background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%); */
+    background-image:url("images/white.jpg") ; */
+    background-size: cover;
+    height: 100vh
+}
+</style>
+{{message}}
+<table class="table" data-ng-hide="message">
+<tr data-ng-repeat="user in pendingRequests">
+<td>{{user.fromId}}</td>
+<td><a href="" data-ng-click="acceptOrRejectRequest(user.fromId,'A')" class="btn btn-default" data-ng-hide="message">Accept</a> </td>
+<td><a href="" data-ng-click="acceptOrRejectRequest(user.fromId,'D')" class="btn btn-default" data-ng-hide="message">Reject</a> </td>
+</tr>
+</table>
+</div>

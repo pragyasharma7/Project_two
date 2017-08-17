@@ -1,0 +1,95 @@
+/**
+ * 
+ */
+var app=angular.module("app",['ngRoute','ngCookies'])
+app.config(function($routeProvider){
+	$routeProvider
+	.when('/registration',{
+		templateUrl:'views/RegistrationForm.html',
+		controller:'UserController'
+	})
+	.when('/login',{
+		templateUrl:'views/Login.html',
+		controller:'UserController'
+	})
+	.when('/savejob',{
+		templateUrl:'views/JobForm.html',
+		controller:'JobController'
+	})
+	.when('/getalljobs',{
+		templateUrl:'views/JobTitles.html',
+		controller:'JobController'
+	})
+	.when('/saveblogpost',{
+		templateUrl:'views/BlogPostForm.html',
+		controller:'BlogController' 
+	})
+	.when('/listofblogs',{
+		templateUrl:'views/BlogsList.html',
+		controller:'BlogController' 
+	})
+	.when('/getBlogForApproval/:id',{
+		templateUrl:'views/ApprovalForm.html',
+		controller:'BlogDetailController' 
+	})
+	.when('/getBlogDetail/:id',{
+		templateUrl:'views/BlogDetail.html',
+		controller:'BlogDetailController' 
+	})
+	.when('/friendsuggestions',{
+		templateUrl:'views/SuggestedUsersList.html',
+		controller:'FriendController' 
+	})
+	.when('/pendingrequests',{
+		templateUrl:'views/ViewRequests.html',
+		controller:'FriendController' 
+	})
+	.when('/viewfriends',{
+		templateUrl:'views/FriendList.html',
+		controller:'FriendController' 
+	})
+	.when('/wall/:username',{
+		templateUrl:'views/Wall.html',
+		controller:'WallController' 
+	})
+	.when('/profilepic',{
+		templateUrl:'views/ProfilePic.html'
+	})
+	.when('/editprofile',{
+		templateUrl:'views/EditProfile.html',
+		controller:'UserController'
+	})
+	 .when('/chat',{
+		templateUrl:'views/Chat.html',
+		controller:'ChatCtrl'
+	})
+	.when('/message/:username',{
+		templateUrl:'views/ViewMessages.html',
+		controller:'MessageController'
+	})
+	.otherwise({
+		templateUrl:'views/Home.html'
+	})
+})
+
+app.run(function($location,$rootScope,UserService,$cookieStore){
+	
+	if($rootScope.currentUser==undefined)
+		$rootScope.currentUser=$cookieStore.get("currentUser")
+	
+	$rootScope.logout=function(){
+		UserService.logoutUser().then(function(response){
+			$rootScope.currentUser.firstName=null
+			$rootScope.message="Logged out successfully"
+				//$rootScope.currentUser==null
+				delete $rootScope
+				$cookieStore.remove("currentUser")
+				$location.path('/login')
+		},function(response){
+			console.log(response.status)
+			$rootScope.message=response.data.message
+			$location.path('/login')
+		})
+	}
+	
+})

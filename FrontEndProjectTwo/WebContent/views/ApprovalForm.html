@@ -1,0 +1,9 @@
+<h3>{{blogPost.title}}</h3>
+<b>Created by: {{blogPost.createdBy.username}}</b><br>
+<b>{{blogPost.postedOn | date:'medium'}}</b>
+<p>{{blogPost.description}}</p>
+<form>
+<input type="radio" data-ng-model="blogPost.approval" value="true">Approve<br>
+<input type="radio" data-ng-model="blogPost.approval" value="false">Reject<br>
+<button class="btn btn-default" data-ng-click="updateApproval()">Update</button>
+</form>

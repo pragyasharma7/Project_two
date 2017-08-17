@@ -1,0 +1,40 @@
+<div>
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    /* background-size: 200% 100% !important;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0); */
+/*     background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%); */
+    background-image:url("images/white.jpg") ; */
+    background-size: cover;
+    height: 100vh
+}
+</style>
+<table class="table">
+<thead>
+<tr>
+<th></th><th>Username</th><th>First Name</th><th>Last Name</th><th>Role</th><th>ONLINE/OFFLINE</th><th>Friend Request</th>
+</tr>
+</thead>
+<tbody>
+<tr data-ng-repeat="user in listOfSuggestedFriends">
+<td><img src="http://localhost:8080/BackEndProjectTwo/getimage/{{user.username}}" alt="" width="150px" height="150px" class="img-rounded"></td>
+<td>{{user.username}}</td>
+<td>{{user.firstName}}</td>
+<td>{{user.lastName}}</td>
+<td>{{user.role}}</td>
+<td data-ng-if="user.online">ONLINE</td>
+<td data-ng-if="!user.online">OFFLINE</td>
+<td><a href="" data-ng-click="friendRequest(user.username)" class="btn btn-default">Add Friend</a></td>
+</tr>
+</tbody>
+</table>
+</div>
